@@ -2,6 +2,7 @@ package com.example.proyecto.Adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyecto.R
@@ -9,7 +10,8 @@ import com.example.proyecto.modelo.Animal
 
 class AnimalAdapter(
     private val animales: List<Animal>,
-    private val onBorrarClick: (Int) -> Unit
+    private val onBorrarClick: (Int) -> Unit,
+    private val onEditarClick: (Int) -> Unit
 ) : RecyclerView.Adapter<AnimalAdapter.AnimalViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimalViewHolder {
@@ -20,8 +22,11 @@ class AnimalAdapter(
     override fun onBindViewHolder(holder: AnimalViewHolder, position: Int) {
         val animal = animales[position]
         holder.bind(animal)
-        holder.itemView.findViewById<View>(R.id.btnBorrar).setOnClickListener {
+        holder.itemView.findViewById<Button>(R.id.btnBorrar).setOnClickListener {
             onBorrarClick(position)
+        }
+        holder.itemView.findViewById<Button>(R.id.btnEditar).setOnClickListener {
+            onEditarClick(position)
         }
     }
 
@@ -36,3 +41,4 @@ class AnimalAdapter(
         }
     }
 }
+

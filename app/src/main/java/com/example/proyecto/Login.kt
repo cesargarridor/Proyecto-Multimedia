@@ -22,10 +22,10 @@ class Login : AppCompatActivity() {
             val enteredUsername = usernameEditText.text.toString()
             val enteredPassword = passwordEditText.text.toString()
 
-            if (enteredUsername == "1" && enteredPassword == "1") {
+            if (enteredUsername == "" && enteredPassword == "") {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
-                finish()  // Cerrar la actividad actual para evitar que el usuario vuelva atrás
+                finish()
             } else {
                 Toast.makeText(this, "Error en el usuario o contraseña", Toast.LENGTH_SHORT).show();
             }
